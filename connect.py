@@ -1,6 +1,10 @@
 from pymongo import MongoClient, collection
 import pymongo
-from credentials import DB_PASS
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
+DB_PASS = os.getenv('DB_PASS')
 
 client = pymongo.MongoClient("mongodb+srv://test:"+DB_PASS+"@cluster0.kfa3h.mongodb.net/test?retryWrites=true&w=majority")
 
