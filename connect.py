@@ -1,6 +1,8 @@
 from pymongo import MongoClient, collection
 import pymongo
-client = pymongo.MongoClient("")
+from credentials import DB_PASS
+
+client = pymongo.MongoClient("mongodb+srv://test:"+DB_PASS+"@cluster0.kfa3h.mongodb.net/test?retryWrites=true&w=majority")
 
 db_name = client['test']
 
