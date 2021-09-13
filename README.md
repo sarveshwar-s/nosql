@@ -1,2 +1,2 @@
-# nosql
-NoSQL programs
+# NoSQL
+NoSQL programs using MongoDB
