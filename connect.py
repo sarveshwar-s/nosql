@@ -99,6 +99,32 @@ def remove_column_unset(column_name):
         collection_name.update_many({},{"$unset": {column_name: ""} })
     except:
         print("Column does not exists| Cannot do unset")
+# Updates a single column based on the id of the column. 
+# Before performing an update we must always perform a find operation. 
+def update_column(column_id,column_name, new_value):
+    try:
+        collection_name.update_one({"_id": column_id},{"$set":{column_name: new_value}})
+        print("column updated.")
+    except:
+        print("Column does not exists or cannot be updated!")
+def another_update_method():
+    users = list(collection_name.find({}))
+    if len(users) <= 0:
+        print("No users found !")
+    else:
+        for index, user in enumerate(users):
+            print(str(index) + " " + str(user.get("email")))
+        delete_number = int(input("Which user to delete from the database?"))
+        new_name = input("Enter an alternative email id")
+        for index, user in enumerate(users):
+            if index == delete_number:
+                id = user.get("_id")
+        print(id)
+        collection_name.update_one({"_id":id},{"$set": {"email": new_name}})
+
+another_update_method()
+
+update_column(ObjectId("6143334cea4b234d07d17628"), "email", "user4@gmail.com")
 
 remove_column_unset("todo")
 
